@@ -1,0 +1,81 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ServiciosGrid from '../../components/ServiciosGrid.astro';
+import TitleBreadcrumb from '../../components/TitleBreadcrumb.astro';
+---
+
+<Layout title="Servicios | Elqui Capital">
+	<Header />
+
+	<main class="page">
+		<TitleBreadcrumb
+			title="Servicios"
+			backgroundImage="/images/inmobiliaria-elquicapital.jpg"
+			breadcrumbs={[
+				{ label: 'Inicio', href: '/' },
+				{ label: 'Servicios' },
+			]}
+		/>
+
+		<section class="wp-section">
+			<ServiciosGrid />
+		</section>
+	</main>
+
+	<Footer />
+</Layout>
+
+<style>
+	.page {
+		padding-top: 7rem;
+	}
+
+	.content {
+		padding: 2.5rem 0 3.5rem;
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1.5rem;
+	}
+
+	.card {
+		background: var(--eq-bg);
+		border: 1px solid var(--eq-border);
+		border-radius: 16px;
+		padding: 1.5rem;
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+	}
+
+	.card h2 {
+		margin: 0 0 0.75rem;
+		color: var(--eq-text);
+		font-size: 1.2rem;
+		font-weight: 800;
+	}
+
+	.card p,
+	.card li {
+		color: var(--eq-text-muted);
+		line-height: 1.7;
+		font-size: 1rem;
+	}
+
+	.card ul {
+		margin: 0;
+		padding-left: 1.2rem;
+	}
+
+	.wp-section {
+		padding: 1rem 0 4rem;
+	}
+
+	@media (max-width: 900px) {
+		.grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

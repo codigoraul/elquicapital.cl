@@ -1,0 +1,161 @@
+---
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+
+const siteOrigin = Astro.url.origin;
+const structuredData = {
+	"@context": "https://schema.org",
+	"@type": "Organization",
+	"name": "Elqui Capital",
+	"description": "Gestión Técnica Inmobiliaria. Permisología, inspección y mantención especializada para una operación continua.",
+	"url": "https://elquicapital.cl",
+	"logo": `${siteOrigin}/logo-elquicapital.png`,
+	"image": `${siteOrigin}/logo-elquicapital.png`,
+	"telephone": "+56934595047",
+	"email": "info@protrabajo.cl",
+	"address": {
+		"@type": "PostalAddress",
+		"streetAddress": "Santa Magdalena N° 75",
+		"addressLocality": "Providencia",
+		"addressRegion": "Región Metropolitana",
+		"addressCountry": "CL"
+	},
+	"geo": {
+		"@type": "GeoCoordinates",
+		"latitude": "-33.4489",
+		"longitude": "-70.6693"
+	},
+	"areaServed": "CL",
+	"aggregateRating": {
+		"@type": "AggregateRating",
+		"ratingValue": "4.9",
+		"reviewCount": "150"
+	},
+	"hasOfferCatalog": {
+		"@type": "OfferCatalog",
+		"name": "Servicios de Gestión Técnica Inmobiliaria",
+		"itemListElement": [
+			{
+				"@type": "Offer",
+				"itemOffered": {
+					"@type": "Service",
+					"name": "Gestión de Permisos Municipales",
+					"description": "Permisos de obra, recepción final, informe sanitario, patentes comerciales y de alcohol."
+				}
+			},
+			{
+				"@type": "Offer",
+				"itemOffered": {
+					"@type": "Service",
+					"name": "Inspección Técnica de Obras",
+					"description": "Supervisión técnica, control normativo y respaldo profesional."
+				}
+			},
+			{
+				"@type": "Offer",
+				"itemOffered": {
+					"@type": "Service",
+					"name": "Mantención Eléctrica Especializada",
+					"description": "Seguridad, continuidad operativa y cumplimiento normativo para cadenas comerciales, locales y viviendas."
+				}
+			}
+		]
+	}
+};
+---
+
+<!doctype html>
+<html lang="es-CL">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<title>{Astro.props.title || 'Abogado Laboral en Chile | Asesoría Legal Laboral | ProTrabajo'}</title>
+		<meta name="description" content="Abogados laborales especialistas en Chile. Despidos injustificados, finiquitos, accidentes laborales, licencias médicas. Consulta gratuita. +20 años de experiencia." />
+		<meta name="keywords" content="abogado laboral chile, abogado laboral santiago, despido injustificado, finiquito, accidente laboral, licencia médica rechazada, demanda laboral, asesoría laboral, derecho laboral chile, abogado despido, indemnización laboral" />
+		
+		<meta name="robots" content="index, follow" />
+		<meta name="author" content="ProTrabajo" />
+		<meta name="geo.region" content="CL" />
+		<meta name="geo.placename" content="Santiago, Chile" />
+		<link rel="canonical" href="https://elquicapital.cl/" />
+		
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Abogado Laboral en Chile | Asesoría Legal Laboral | ProTrabajo" />
+		<meta property="og:description" content="Abogados laborales especialistas en Chile. Despidos injustificados, finiquitos, accidentes laborales. Consulta gratuita." />
+		<meta property="og:url" content="https://elquicapital.cl/" />
+		<meta property="og:locale" content="es_CL" />
+		
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Abogado Laboral en Chile | ProTrabajo" />
+		<meta name="twitter:description" content="Abogados laborales especialistas en Chile. Despidos injustificados, finiquitos, accidentes laborales." />
+		
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+		
+		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+	</head>
+	<body>
+		<slot />
+		<WhatsAppFloat />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--eq-navy: #0A1B2E;
+		--eq-blue: #1F4E79;
+		--eq-sky: #4FA3D1;
+
+		--eq-navy-rgb: 10, 27, 46;
+		--eq-blue-rgb: 31, 78, 121;
+		--eq-sky-rgb: 79, 163, 209;
+
+		--eq-primary: var(--eq-blue);
+		--eq-primary-dark: var(--eq-navy);
+		--eq-accent: var(--eq-sky);
+
+		--eq-bg: #ffffff;
+		--eq-surface: #f8fafc;
+		--eq-background: var(--eq-surface);
+		--eq-border: #e2e8f0;
+
+		--eq-text: #0f172a;
+		--eq-text-muted: #475569;
+		--eq-text-inverse: rgba(255, 255, 255, 0.95);
+		--eq-text-inverse-muted: rgba(255, 255, 255, 0.78);
+
+		--eq-focus: rgba(var(--eq-sky-rgb), 0.35);
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	html,
+	body {
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+		font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-family: 'Inter', sans-serif !important;
+		font-weight: 800;
+		letter-spacing: -0.02em;
+	}
+
+	body * {
+		font-family: 'Inter', sans-serif !important;
+	}
+</style>

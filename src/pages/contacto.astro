@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactInfo from '../components/ContactInfo.astro';
+import TitleBreadcrumb from '../components/TitleBreadcrumb.astro';
+---
+
+<Layout title="Contacto | Elqui Capital">
+	<Header />
+
+	<main class="page">
+		<TitleBreadcrumb
+			title="Contacto"
+			backgroundImage="/images/inmobiliaria-elquicapital.jpg"
+			breadcrumbs={[
+				{ label: 'Inicio', href: '/' },
+				{ label: 'Contacto' },
+			]}
+		/>
+
+		<section class="contact">
+			<ContactInfo />
+		</section>
+	</main>
+
+	<Footer />
+</Layout>
+
+<style>
+	.page {
+		padding-top: 7rem;
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	.contact {
+		padding: 0;
+	}
+</style>
