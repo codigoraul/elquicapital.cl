@@ -12,6 +12,7 @@ function prefixRootPaths(content) {
   const base = normalizedBasePath;
   content = content.replace(/href="\/(?!\/|#)([^"]*)"/g, `href="${base}/$1"`);
   content = content.replace(/src="\/(?!\/)([^"]*)"/g, `src="${base}/$1"`);
+  content = content.replace(/srcset="\/(?!\/)([^"]*)"/g, `srcset="${base}/$1"`);
   content = content.replace(/action="\/(?!\/)([^"]*)"/g, `action="${base}/$1"`);
   content = content.replace(/url\('\/(?!\/)([^']*)'\)/g, `url('${base}/$1')`);
   content = content.replace(/url\("\/(?!\/)([^"]*)"\)/g, `url("${base}/$1")`);
