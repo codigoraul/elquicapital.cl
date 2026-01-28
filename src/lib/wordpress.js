@@ -1,7 +1,8 @@
-const WORDPRESS_API_URL = import.meta.env.WORDPRESS_API_URL || 'http://localhost:10174/wp-json/wp/v2';
+const WORDPRESS_API_URL = (import.meta.env.WORDPRESS_API_URL || 'https://elquicapital.cl/admin/wp-json/wp/v2').replace(/\/+$/, '');
 
 async function fetchAPI(endpoint) {
-  const url = `${WORDPRESS_API_URL}${endpoint}`;
+  const normalizedEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  const url = `${WORDPRESS_API_URL}${normalizedEndpoint}`;
   
   try {
     const response = await fetch(url);
