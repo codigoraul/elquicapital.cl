@@ -1,17 +1,34 @@
 ---
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 
-const siteOrigin = Astro.url.origin;
+const siteUrl = 'https://elquicapital.cl';
+
+const { title, description, canonicalPath, ogImage, robots } = Astro.props as {
+	title?: string;
+	description?: string;
+	canonicalPath?: string;
+	ogImage?: string;
+	robots?: string;
+};
+
+const defaultTitle = 'Elqui Capital | Gestión Técnica Inmobiliaria';
+const defaultDescription = 'Gestión Técnica Inmobiliaria. Permisología, inspección y mantención especializada para una operación continua.';
+const pageTitle = title || defaultTitle;
+const pageDescription = description || defaultDescription;
+
+const canonicalUrl = new URL(canonicalPath || Astro.url.pathname, siteUrl).toString();
+const ogImageUrl = new URL(ogImage || '/logo-elquicapital.png', siteUrl).toString();
+
 const structuredData = {
 	"@context": "https://schema.org",
 	"@type": "Organization",
 	"name": "Elqui Capital",
-	"description": "Gestión Técnica Inmobiliaria. Permisología, inspección y mantención especializada para una operación continua.",
-	"url": "https://elquicapital.cl",
-	"logo": `${siteOrigin}/logo-elquicapital.png`,
-	"image": `${siteOrigin}/logo-elquicapital.png`,
+	"description": defaultDescription,
+	"url": siteUrl,
+	"logo": ogImageUrl,
+	"image": ogImageUrl,
 	"telephone": "+56934595047",
-	"email": "info@protrabajo.cl",
+	"email": "info@elquicapital.cl",
 	"address": {
 		"@type": "PostalAddress",
 		"streetAddress": "Santa Magdalena N° 75",
@@ -71,25 +88,26 @@ const structuredData = {
 		<link rel="icon" type="image/png" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 		
-		<title>{Astro.props.title || 'Abogado Laboral en Chile | Asesoría Legal Laboral | ProTrabajo'}</title>
-		<meta name="description" content="Abogados laborales especialistas en Chile. Despidos injustificados, finiquitos, accidentes laborales, licencias médicas. Consulta gratuita. +20 años de experiencia." />
-		<meta name="keywords" content="abogado laboral chile, abogado laboral santiago, despido injustificado, finiquito, accidente laboral, licencia médica rechazada, demanda laboral, asesoría laboral, derecho laboral chile, abogado despido, indemnización laboral" />
+		<title>{pageTitle}</title>
+		<meta name="description" content={pageDescription} />
 		
-		<meta name="robots" content="index, follow" />
-		<meta name="author" content="ProTrabajo" />
+		<meta name="robots" content={robots || 'index, follow'} />
+		<meta name="author" content="Elqui Capital" />
 		<meta name="geo.region" content="CL" />
 		<meta name="geo.placename" content="Santiago, Chile" />
-		<link rel="canonical" href="https://elquicapital.cl/" />
+		<link rel="canonical" href={canonicalUrl} />
 		
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content="Abogado Laboral en Chile | Asesoría Legal Laboral | ProTrabajo" />
-		<meta property="og:description" content="Abogados laborales especialistas en Chile. Despidos injustificados, finiquitos, accidentes laborales. Consulta gratuita." />
-		<meta property="og:url" content="https://elquicapital.cl/" />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={pageDescription} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:image" content={ogImageUrl} />
 		<meta property="og:locale" content="es_CL" />
 		
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content="Abogado Laboral en Chile | ProTrabajo" />
-		<meta name="twitter:description" content="Abogados laborales especialistas en Chile. Despidos injustificados, finiquitos, accidentes laborales." />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={pageDescription} />
+		<meta name="twitter:image" content={ogImageUrl} />
 		
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -108,10 +126,12 @@ const structuredData = {
 		--eq-navy: #0A1B2E;
 		--eq-blue: #1F4E79;
 		--eq-sky: #4FA3D1;
+		--eq-quaternary: #2C6CA6;
 
 		--eq-navy-rgb: 10, 27, 46;
 		--eq-blue-rgb: 31, 78, 121;
 		--eq-sky-rgb: 79, 163, 209;
+		--eq-quaternary-rgb: 44, 108, 166;
 
 		--eq-primary: var(--eq-blue);
 		--eq-primary-dark: var(--eq-navy);

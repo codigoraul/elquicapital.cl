@@ -24,11 +24,6 @@ const statusData = status ? statusMessages[status] : null;
 
 <section class="contact-section">
   <div class="container">
-    <div class="section-header">
-      <span class="section-badge">Contacto</span>
-      <h2>Agenda tu Consulta</h2>
-      <p class="section-subtitle">Estamos listos para ayudarte con tu caso</p>
-    </div>
 
     <div class="contact-wrapper">
       <!-- Columna Izquierda: Información de Contacto -->
@@ -178,8 +173,8 @@ const statusData = status ? statusMessages[status] : null;
   
   .contact-section {
     padding: 6rem 2rem;
-    background: var(--eq-primary-dark);
-    color: #f6f6f6;
+    background: var(--eq-surface);
+    color: var(--eq-text);
     position: relative;
     overflow: hidden;
   }
@@ -218,7 +213,7 @@ const statusData = status ? statusMessages[status] : null;
     letter-spacing: 0.5px;
     margin-bottom: 1rem;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--eq-primary);
   }
   
   h2 {
@@ -226,11 +221,12 @@ const statusData = status ? statusMessages[status] : null;
     margin-bottom: 1rem;
     font-weight: 800;
     letter-spacing: -0.02em;
+    color: var(--eq-text);
   }
   
   .section-subtitle {
     font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--eq-text-muted);
   }
 
   /* Layout de 2 columnas */
@@ -249,7 +245,7 @@ const statusData = status ? statusMessages[status] : null;
   }
 
   .info-description {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--eq-text-muted);
     margin-bottom: 2rem;
     line-height: 1.7;
   }
@@ -284,7 +280,7 @@ const statusData = status ? statusMessages[status] : null;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--eq-primary-dark);
+    background: var(--eq-quaternary);
     border-radius: 10px;
     color: white;
   }
@@ -393,7 +389,7 @@ const statusData = status ? statusMessages[status] : null;
     justify-content: center;
     gap: 0.5rem;
     padding: 1rem 2rem;
-    background: var(--eq-primary-dark);
+    background: var(--eq-quaternary);
     color: white;
     border: none;
     border-radius: 10px;

@@ -13,7 +13,7 @@ const direccion = contactInfo?.acf?.direccion || 'Santa Magdalena N° 75, Provid
       <div class="footer-col">
         <picture>
           <source srcset="/logo-elquicapital.svg" type="image/svg+xml" />
-          <img src="/logo-elquicapital.png" alt="ElQuiCapital" style="height: 50px;" />
+          <img src="/logo-elquicapital.png" alt="ElQuiCapital" style="height: 72px;" />
         </picture>
         <p class="footer-desc">Asesoría legal especializada en derecho laboral con más de 10 años de experiencia defendiendo tus derechos.</p>
         <div class="social-links">
@@ -36,24 +36,12 @@ const direccion = contactInfo?.acf?.direccion || 'Santa Magdalena N° 75, Provid
       </div>
 
       <div class="footer-col">
-        <h4>Navegación</h4>
-        <ul class="footer-links">
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#nosotros">Nosotros</a></li>
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#proceso">Proceso</a></li>
-          <li><a href="#testimonios">Testimonios</a></li>
-          <li><a href="#faq">Preguntas Frecuentes</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
         <h4>Servicios</h4>
         <ul class="footer-links">
-          <li><a href="#servicios">Asesoría Legal Laboral</a></li>
-          <li><a href="#servicios">Defensa en Juicios</a></li>
-          <li><a href="#servicios">Negociación Colectiva</a></li>
-          <li><a href="#servicios">Contratos de Trabajo</a></li>
+          <li><a href="servicios">Gestión Técnica Inmobiliaria</a></li>
+          <li><a href="servicios">Permisología</a></li>
+          <li><a href="servicios">Inspección Técnica de Obras</a></li>
+          <li><a href="servicios">Mantención Eléctrica Especializada</a></li>
         </ul>
       </div>
 
@@ -116,11 +104,12 @@ const direccion = contactInfo?.acf?.direccion || 'Santa Magdalena N° 75, Provid
   .footer-container {
     max-width: 1400px;
     margin: 0 auto;
+    padding: 1rem 2rem;
   }
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    grid-template-columns: 2fr 1fr 1.5fr;
     gap: 3rem;
     margin-bottom: 3rem;
   }
@@ -164,8 +153,12 @@ const direccion = contactInfo?.acf?.direccion || 'Santa Magdalena N° 75, Provid
     transform: translateY(-3px);
   }
 
+  .footer-col {
+    font-size: 1.25rem;
+  }
+
   .footer-col h4 {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: white;

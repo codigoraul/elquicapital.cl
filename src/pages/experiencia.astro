@@ -5,7 +5,11 @@ import Footer from '../components/Footer.astro';
 import TitleBreadcrumb from '../components/TitleBreadcrumb.astro';
 ---
 
-<Layout title="Experiencia | Elqui Capital">
+<Layout
+	title="Experiencia | Elqui Capital"
+	description="Experiencia en gestión técnica inmobiliaria para marcas a nivel nacional. Proyectos desde Arica a Punta Arenas con respaldo profesional."
+	canonicalPath="/experiencia"
+>
 	<Header />
 
 	<main class="page">
@@ -21,26 +25,24 @@ import TitleBreadcrumb from '../components/TitleBreadcrumb.astro';
 		<section class="brands">
 			<div class="container">
 				<div class="section-header">
-				<h2>Gestión Técnica Inmobiliaria</h2>
-				<p class="section-subtitle">Permisología, inspección y mantención especializada para una operación continua</p>
+				<h2>Experiencia</h2>
+				<p class="section-subtitle">Gestión de proyectos desde Arica a Punta Arenas para marcas como:</p>
 				</div>
 				<div class="brands-grid">
-					<img class="brand" src="/brands/cruz-verde.svg" alt="Cruz Verde" loading="lazy" />
-					<img class="brand" src="/brands/integramedica.svg" alt="IntegraMédica" loading="lazy" />
-					<img class="brand" src="/brands/sportlife.svg" alt="Sportlife" loading="lazy" />
-					<img class="brand" src="/brands/fashions-park.svg" alt="Fashion’s Park" loading="lazy" />
-					<img class="brand" src="/brands/holly-concept.svg" alt="Holly Concept" loading="lazy" />
-					<img class="brand" src="/brands/dutties.svg" alt="Dutties" loading="lazy" />
-					<img class="brand" src="/brands/aliex-tech-software.svg" alt="Aliex Tech Software" loading="lazy" />
-					<img class="brand" src="/brands/megacevichazo.svg" alt="Restaurant Megacevichazo" loading="lazy" />
-					<img class="brand" src="/brands/cevichazo.svg" alt="Cevichazo" loading="lazy" />
-					<img class="brand" src="/brands/melt-pizzas.svg" alt="Melt Pizzas" loading="lazy" />
-					<img class="brand" src="/brands/mar-iberico.svg" alt="Mar Ibérico" loading="lazy" />
-					<img class="brand" src="/brands/trattoria-bramasole.svg" alt="Trattoria Bramasole" loading="lazy" />
-					<img class="brand" src="/brands/niu-sushi.svg" alt="Niu Sushi" loading="lazy" />
+					<img class="brand" src="/images/brand/cruz-verde.png" alt="Cruz Verde" loading="lazy" />
+					<img class="brand" src="/images/brand/integramedica.png" alt="IntegraMédica" loading="lazy" />
+					<img class="brand" src="/images/brand/sportlife.png" alt="Sportlife" loading="lazy" />
+					<img class="brand" src="/images/brand/fashions-park.png" alt="Fashion’s Park" loading="lazy" />
+					<img class="brand" src="/images/brand/holly-concept.png" alt="Holly Concept" loading="lazy" />
+					<img class="brand" src="/images/brand/dutties.png" alt="Dutties" loading="lazy" />
+					<img class="brand" src="/images/brand/aliex-tech-software.png" alt="Aliex Tech Software" loading="lazy" />
+					<img class="brand" src="/images/brand/megacevichazo.png" alt="Restaurant Megacevichazo" loading="lazy" />
+					<img class="brand" src="/images/brand/cevichazo.png" alt="Cevichazo" loading="lazy" />
+					<img class="brand" src="/images/brand/melt-pizzas.png" alt="Melt Pizzas" loading="lazy" />
+					<img class="brand" src="/images/brand/mar-iberico.png" alt="Mar Ibérico" loading="lazy" />
+					<img class="brand" src="/images/brand/trattoria-bramasole.png" alt="Trattoria Bramasole" loading="lazy" />
+					<img class="brand" src="/images/brand/niu-sushi.png" alt="Niu Sushi" loading="lazy" />
 				</div>
-
-				<p class="note">Para mostrar estos logos, copia los archivos a <code>public/brands/</code> con los nombres indicados arriba (pueden ser PNG o SVG manteniendo el mismo nombre en la ruta).</p>
 			</div>
 		</section>
 	</main>
@@ -65,21 +67,41 @@ import TitleBreadcrumb from '../components/TitleBreadcrumb.astro';
 
 	.brands-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+		grid-template-columns: repeat(2, 1fr);
 		gap: 1.25rem;
 		align-items: center;
+		justify-items: center;
+	}
+
+	@media (min-width: 640px) {
+		.brands-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.brands-grid {
+			grid-template-columns: repeat(5, 1fr);
+		}
 	}
 
 	.brand {
 		width: 100%;
-		height: 72px;
-		object-fit: contain;
-		filter: grayscale(100%);
-		opacity: 0.9;
+		max-width: 100%;
+		aspect-ratio: 400 / 320;
+		object-fit: cover;
+		filter: saturate(0.7);
+		opacity: 0.7;
+		transition: filter 180ms ease, opacity 180ms ease;
 		background: var(--eq-bg);
 		border: 1px solid var(--eq-border);
 		border-radius: 14px;
 		padding: 0.75rem 1rem;
+	}
+
+	.brand:hover {
+		filter: saturate(1);
+		opacity: 1;
 	}
 
 	.note {
@@ -92,9 +114,17 @@ import TitleBreadcrumb from '../components/TitleBreadcrumb.astro';
 		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 		font-size: 0.95em;
 	}
-	 .section-header {
-    text-align: center;
-    margin-bottom: 4rem;
+	.section-header {
+		text-align: center;
+		margin-bottom: 4rem;
+	}
+
+	.section-header h2 {
+		font-size: 32px;
+		margin-bottom: 1rem;
+		color: #454655;
+		font-weight: 800;
+		letter-spacing: -0.02em;
 	}
 	.section-subtitle {
 		font-size: 1.125rem;

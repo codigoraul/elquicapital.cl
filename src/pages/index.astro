@@ -9,7 +9,11 @@ const serviciosHome = (await getServicios()).slice(0, 4);
 ---
 
 
-<Layout title="Elqui Capital | Gestión Técnica Inmobiliaria">
+<Layout
+	title="Elqui Capital | Gestión Técnica Inmobiliaria"
+	description="Permisología, inspección técnica y mantención especializada para proyectos comerciales, corporativos y residenciales."
+	canonicalPath="/"
+>
 	<Header />
 	
 	<section id="inicio" class="hero">
@@ -85,7 +89,7 @@ const serviciosHome = (await getServicios()).slice(0, 4);
 			
 			<div class="nosotros-content">
 				<div class="nosotros-image">
-					<img src="/images/foto-abogado.png" alt="Elqui Capital" />
+					<img src="/images/gestion-asesoria-inmobiliaria.jpg" alt="Elqui Capital" />
 				</div>
 				
 				<div class="nosotros-text">
@@ -384,7 +388,7 @@ const serviciosHome = (await getServicios()).slice(0, 4);
 	}
 
 	.cta-button.primary {
-		background: var(--eq-primary-dark);
+		background: #17568E;
 		color: white;
 		box-shadow: 0 10px 30px rgba(var(--eq-blue-rgb), 0.3);
 	}
@@ -517,7 +521,7 @@ const serviciosHome = (await getServicios()).slice(0, 4);
 	.nosotros-section .section-badge {
 		display: inline-block;
 		padding: 0.5rem 1.5rem;
-		background: linear-gradient(135deg, var(--eq-primary-dark) 0%, var(--eq-accent) 100%);
+		background: linear-gradient(135deg, #2C6CA6 0%, var(--eq-accent) 100%);
 		color: white;
 		border-radius: 50px;
 		font-size: 0.875rem;
@@ -713,7 +717,7 @@ const serviciosHome = (await getServicios()).slice(0, 4);
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background: var(--eq-primary-dark);
+		background: var(--eq-quaternary);
 		border-radius: 12px;
 		color: white;
 	}
@@ -728,7 +732,7 @@ const serviciosHome = (await getServicios()).slice(0, 4);
 	/* Sección Consulta */
 	.consulta-section {
 		padding: 6rem 2rem;
-		background: var(--eq-primary-dark);
+		background: #2C6CA6;
 		color: white;
 	}
 	.consulta-section h2 {
@@ -765,7 +769,7 @@ const serviciosHome = (await getServicios()).slice(0, 4);
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background: var(--eq-primary-dark);
+		background: var(--eq-quaternary);
 		border-radius: 12px;
 		color: white;
 	}
