@@ -30,6 +30,7 @@ jobs:
       - name: Build Astro site
         env:
           WORDPRESS_API_URL: ${{ secrets.WORDPRESS_API_URL }}
+          BASE_PATH: /prueba
         run: npm run build
 
       - name: Deploy to FTP
