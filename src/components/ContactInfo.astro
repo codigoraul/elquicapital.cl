@@ -11,18 +11,9 @@ const horario = contactInfo?.acf?.horario || 'Lunes a Viernes 9:00 - 18:00';
 const rawBase = import.meta.env.BASE_URL ?? '/';
 const basePath = rawBase === '/' ? '' : rawBase.replace(/\/$/, '');
 const actionUrl = `${basePath}/contacto.php`;
-
-const status = Astro.url.searchParams.get('status');
-const statusMessages: Record<string, { type: 'success' | 'error', text: string }> = {
-  success: { type: 'success', text: '¡Mensaje enviado exitosamente! Nos pondremos en contacto contigo pronto.' },
-  missing_fields: { type: 'error', text: 'Por favor completa todos los campos obligatorios.' },
-  invalid_email: { type: 'error', text: 'El correo electrónico ingresado no es válido.' },
-  mail_failed: { type: 'error', text: 'No se pudo enviar el mensaje. Por favor intenta nuevamente o contáctanos por teléfono.' },
-};
-const statusData = status ? statusMessages[status] : null;
 ---
 
-<section class="contact-section">
+<section class="contact-section" id="contacto">
   <div class="container">
 
     <div class="contact-wrapper">
@@ -90,11 +81,7 @@ const statusData = status ? statusMessages[status] : null;
         <h3>Formulario de Contacto</h3>
         
         <div class="contact-form-wrapper">
-          {statusData && (
-          <div class={`status-message ${statusData.type === 'success' ? 'status-success' : 'status-error'}`}>
-            {statusData.text}
-          </div>
-        )}
+          <div id="contact-status" class="status-message" style="display:none;"></div>
         
         <form class="contact-form" id="contactForm" action={actionUrl} method="POST">
           <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off" />
@@ -139,6 +126,26 @@ const statusData = status ? statusMessages[status] : null;
     </div>
   </div>
 </section>
+
+<script>
+  const statusMessages = {
+    success: { type: 'success', text: '¡Mensaje enviado exitosamente! Nos pondremos en contacto contigo pronto.' },
+    missing_fields: { type: 'error', text: 'Por favor completa todos los campos obligatorios.' },
+    invalid_email: { type: 'error', text: 'El correo electrónico ingresado no es válido.' },
+    mail_failed: { type: 'error', text: 'No se pudo enviar el mensaje. Por favor intenta nuevamente o contáctanos por teléfono.' },
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const status = params.get('status');
+  const data = status && status in statusMessages ? statusMessages[status as keyof typeof statusMessages] : null;
+  const el = document.getElementById('contact-status');
+
+  if (el && data) {
+    el.textContent = data.text;
+    el.classList.add(data.type === 'success' ? 'status-success' : 'status-error');
+    el.style.display = '';
+  }
+</script>
 
 <style>
   .honeypot {

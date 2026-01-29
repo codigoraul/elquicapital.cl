@@ -78,13 +78,13 @@ function base_url(string $siteUrl, string $basePath, string $path): string {
 }
 
 function contacto_url(string $siteUrl, string $basePath, string $status): string {
-  $base = base_url($siteUrl, $basePath, '/');
+  $base = base_url($siteUrl, $basePath, '/contacto');
   $qs = http_build_query(['status' => $status]);
   return $base . '?' . $qs . '#contacto';
 }
 
 function contacto_url_with_error(string $siteUrl, string $basePath, string $status, string $error): string {
-  $base = base_url($siteUrl, $basePath, '/');
+  $base = base_url($siteUrl, $basePath, '/contacto');
   $qs = http_build_query(['status' => $status, 'error' => $error]);
   return $base . '?' . $qs . '#contacto';
 }
@@ -105,12 +105,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
     exit;
   }
-  redirect_to(base_url($SITE_URL, $BASE_PATH, '/#contacto'));
+  redirect_to(base_url($SITE_URL, $BASE_PATH, '/contacto#contacto'));
 }
 
 $gotcha = trim((string)($_POST['_gotcha'] ?? ''));
 if ($gotcha !== '') {
-  redirect_to(base_url($SITE_URL, $BASE_PATH, '/?status=success#contacto'));
+  redirect_to(base_url($SITE_URL, $BASE_PATH, '/contacto?status=success#contacto'));
 }
 
 $nombre = trim((string)($_POST['nombre'] ?? ''));
