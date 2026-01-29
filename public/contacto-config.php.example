@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 return [
   'BASE_PATH' => '',
-  'SITE_URL' => 'https://protrabajo.cl',
-  'TO_EMAIL' => 'contacto@protrabajo.cl, codigoraul@gmail.com',
-  'FROM_EMAIL' => 'contacto@protrabajo.cl',
-  'FROM_NAME' => 'ProTrabajo',
+  'SITE_URL' => 'https://elquicapital.cl',
+  'TO_EMAIL' => 'contacto@elquicapital.cl, codigoraul@gmail.com',
+  'FROM_EMAIL' => 'contacto@elquicapital.cl',
+  'FROM_NAME' => 'Elqui Capital',
   'BCC_EMAILS' => '',
 ];

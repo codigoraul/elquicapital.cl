@@ -3,7 +3,7 @@ import { getContactInfo } from '../lib/wordpress.js';
 
 const contactInfo = await getContactInfo();
 
-const email = contactInfo?.acf?.email || 'contacto@protrabajo.cl';
+const email = contactInfo?.acf?.email || 'contacto@elquicapital.cl';
 const telefono = contactInfo?.acf?.telefono || '+569 33770553';
 const direccion = contactInfo?.acf?.direccion || 'Santa Magdalena N° 75, Providencia';
 const horario = contactInfo?.acf?.horario || 'Lunes a Viernes 9:00 - 18:00';

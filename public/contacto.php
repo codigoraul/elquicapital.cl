@@ -5,12 +5,12 @@ declare(strict_types=1);
 $BASE_PATH = '';
 $SITE_URL = (isset($_SERVER['HTTP_HOST']) && is_string($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] !== '')
   ? ('https://' . $_SERVER['HTTP_HOST'])
-  : 'https://protrabajo.cl';
+  : 'https://elquicapital.cl';
 
-$TO_EMAILS_BASE = 'contacto@protrabajo.cl, codigoraul@gmail.com';
+$TO_EMAILS_BASE = 'codigoraul@gmail.com, contacto@elquicapital.cl';
 $TO_EMAIL = $TO_EMAILS_BASE;
-$FROM_EMAIL = 'contacto@protrabajo.cl';
-$FROM_NAME = 'ProTrabajo';
+$FROM_EMAIL = 'contacto@elquicapital.cl';
+$FROM_NAME = 'Elqui Capital';
 $BCC_EMAILS = '';
 
 $CONFIG_USED_PATH = '';
@@ -127,7 +127,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   redirect_to(contacto_url($SITE_URL, $BASE_PATH, 'invalid_email'));
 }
 
-$subject = 'Nueva consulta desde protrabajo.cl';
+$subject = 'Nueva consulta desde elquicapital.cl';
 if ($asunto !== '') {
   $subject = 'Consulta: ' . $asunto;
 }
@@ -170,7 +170,7 @@ $telefonoCell = $telefono !== '' ? $escape($telefono) : '-';
 $mensajeHtml = nl2br($escape($mensaje));
 
 $bodyHtml = '<!doctype html><html><head><meta charset="UTF-8"></head><body style="font-family:Arial,Helvetica,sans-serif; color:#111827;">'
-  . '<h2 style="margin:0 0 16px; font-size:18px;">Nueva consulta desde ProTrabajo</h2>'
+  . '<h2 style="margin:0 0 16px; font-size:18px;">Nueva consulta desde Elqui Capital</h2>'
   . '<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; width:100%; max-width:640px;">'
   . '<tbody>'
   . '<tr><td style="padding:8px 10px; border:1px solid #E5E7EB; font-weight:700; width:180px;">Nombre</td><td style="padding:8px 10px; border:1px solid #E5E7EB;">' . $escape($nombre) . '</td></tr>'
@@ -181,14 +181,14 @@ $bodyHtml = '<!doctype html><html><head><meta charset="UTF-8"></head><body style
   . '</tbody></table>'
   . '</body></html>';
 
-$bodyText = "Nueva consulta desde ProTrabajo\n\n"
+$bodyText = "Nueva consulta desde Elqui Capital\n\n"
   . "Nombre: {$nombre}\n"
   . "Email: {$email}\n"
   . "Teléfono: " . ($telefono !== '' ? $telefono : '-') . "\n"
   . "Asunto: " . ($asunto !== '' ? $asunto : '-') . "\n\n"
   . "Mensaje:\n{$mensaje}\n";
 
-$boundary = 'protrabajo_' . bin2hex(random_bytes(12));
+$boundary = 'elquicapital_' . bin2hex(random_bytes(12));
 $body = "--{$boundary}\r\n"
   . "Content-Type: text/plain; charset=UTF-8\r\n"
   . "Content-Transfer-Encoding: 8bit\r\n\r\n"
@@ -205,7 +205,7 @@ $headers[] = 'Content-Type: multipart/alternative; boundary="' . $boundary . '"'
 $headers[] = 'Date: ' . date(DATE_RFC2822);
 $host = parse_url($SITE_URL, PHP_URL_HOST);
 if (!is_string($host) || $host === '') {
-  $host = 'protrabajo.cl';
+  $host = 'elquicapital.cl';
 }
 $headers[] = 'Message-ID: <' . bin2hex(random_bytes(16)) . '@' . $host . '>';
 $headers[] = 'From: ' . $encodeDisplayName($FROM_NAME) . ' <' . $sanitizeHeaderValue($FROM_EMAIL) . '>';
