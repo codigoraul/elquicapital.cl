@@ -73,7 +73,7 @@ const direccion = contactInfo?.acf?.direccion || 'Santa Magdalena N° 75, Provid
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; {new Date().getFullYear()} ProTrabajo. Todos los derechos reservados.</p>
+      <p>@ 2026  elquicapital.cl por <a href="https://diseñopaginas.cl" target="_blank">diseñopaginas.cl</a></p>
       <div class="footer-legal">
         <a href="#">Política de Privacidad</a>
         <span>•</span>
@@ -231,6 +231,21 @@ const direccion = contactInfo?.acf?.direccion || 'Santa Magdalena N° 75, Provid
     font-size: 0.9rem;
   }
 
+  .footer-bottom a {
+    color: rgba(var(--eq-quaternary-rgb), 0.92);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, text-decoration-color 0.3s ease;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(var(--eq-quaternary-rgb), 0.35);
+  }
+
+  .footer-bottom a:hover {
+    color: rgba(var(--eq-sky-rgb), 0.95);
+    text-decoration-color: rgba(var(--eq-sky-rgb), 0.55);
+  }
+
   .footer-legal {
     display: flex;
     gap: 1rem;
@@ -240,13 +255,13 @@ const direccion = contactInfo?.acf?.direccion || 'Santa Magdalena N° 75, Provid
   }
 
   .footer-legal a {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(var(--eq-quaternary-rgb), 0.85);
     text-decoration: none;
     transition: color 0.3s ease;
   }
 
   .footer-legal a:hover {
-    color: var(--eq-accent);
+    color: rgba(var(--eq-sky-rgb), 0.95);
   }
 
   @media (max-width: 1024px) {

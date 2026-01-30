@@ -245,17 +245,36 @@ const serviciosHome = (await getServicios()).slice(0, 3);
 		padding-top: 6rem;
 		position: relative;
 		overflow: hidden;
-		background: linear-gradient(135deg, rgba(0, 29, 123, 0.55) 0%, rgba(0, 29, 123, 0.38) 100%), url('/images/inmobiliaria-elquicapital.jpg');
+		background: transparent;
+		color: #ffffff;
+	}
+
+	.hero::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background-image: url('/images/inmobiliaria-elquicapital.jpg');
 		background-size: cover;
 		background-position: center;
 		background-attachment: fixed;
-		color: #ffffff;
+		filter: brightness(1.08) contrast(1.06) saturate(1.05);
+		transform: scale(1.02);
+		z-index: 0;
+	}
+
+	.hero::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(135deg, rgba(0, 29, 123, 0.62) 0%, rgba(0, 29, 123, 0.45) 100%);
+		z-index: 0;
 	}
 
 	.hero-background {
 		position: absolute;
 		inset: 0;
 		overflow: hidden;
+		z-index: 1;
 	}
 
 	.gradient-orb {
@@ -302,7 +321,7 @@ const serviciosHome = (await getServicios()).slice(0, 3);
 
 	.hero-content {
 		position: relative;
-		z-index: 1;
+		z-index: 2;
 		max-width: 900px;
 		text-align: center;
 		color: #ffffff;
@@ -756,7 +775,11 @@ const serviciosHome = (await getServicios()).slice(0, 3);
 	.consulta-section {
 		padding: 6rem 2rem;
 		background:
-			radial-gradient(ellipse 140% 90% at 50% 50%, #004AA5 0%, #00307f 45%, #000d66 100%);
+			radial-gradient(ellipse 140% 90% at 50% 50%, rgba(0, 74, 165, 0.55) 0%, rgba(0, 48, 127, 0.66) 45%, rgba(0, 13, 102, 0.82) 100%),
+			url('/images/bg-evaluacion.jpg');
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
 		color: white;
 		position: relative;
 		overflow: hidden;
@@ -768,10 +791,8 @@ const serviciosHome = (await getServicios()).slice(0, 3);
 		inset: 0;
 		background:
 			radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 55%),
-			radial-gradient(circle at 80% 35%, rgba(0, 66, 171, 0.28) 0%, rgba(0, 66, 171, 0) 60%),
-			repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.06) 0 1px, rgba(255, 255, 255, 0) 1px 42px),
-			repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0 1px, rgba(255, 255, 255, 0) 1px 42px);
-		opacity: 0.55;
+			radial-gradient(circle at 80% 35%, rgba(0, 66, 171, 0.28) 0%, rgba(0, 66, 171, 0) 60%);
+		opacity: 0.32;
 		pointer-events: none;
 	}
 

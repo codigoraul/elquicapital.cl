@@ -62,7 +62,27 @@ import TitleBreadcrumb from '../components/TitleBreadcrumb.astro';
 	}
 
 	.brands {
-		padding: 2.5rem 0 4rem;
+		padding: 4rem 0 4.5rem;
+		position: relative;
+		overflow: hidden;
+		background:
+			radial-gradient(ellipse 140% 90% at 50% 35%, rgba(0, 74, 165, 0.92) 0%, rgba(0, 29, 123, 0.92) 45%, rgba(0, 13, 102, 0.98) 100%);
+	}
+
+	.brands::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background:
+			radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 55%),
+			radial-gradient(circle at 80% 30%, rgba(0, 74, 165, 0.38) 0%, rgba(0, 74, 165, 0) 60%);
+		opacity: 0.7;
+		pointer-events: none;
+	}
+
+	.brands .container {
+		position: relative;
+		z-index: 1;
 	}
 
 	.brands-grid {
@@ -93,8 +113,8 @@ import TitleBreadcrumb from '../components/TitleBreadcrumb.astro';
 		filter: saturate(0.7);
 		opacity: 0.7;
 		transition: filter 180ms ease, opacity 180ms ease;
-		background: var(--eq-bg);
-		border: 1px solid var(--eq-border);
+		background: rgba(255, 255, 255, 0.92);
+		border: 1px solid rgba(255, 255, 255, 0.25);
 		border-radius: 14px;
 		padding: 0.75rem 1rem;
 	}
@@ -122,13 +142,13 @@ import TitleBreadcrumb from '../components/TitleBreadcrumb.astro';
 	.section-header h2 {
 		font-size: 32px;
 		margin-bottom: 1rem;
-		color: #454655;
+		color: rgba(255, 255, 255, 0.98);
 		font-weight: 800;
 		letter-spacing: -0.02em;
 	}
 	.section-subtitle {
 		font-size: 1.125rem;
-		color: #454655;
+		color: rgba(255, 255, 255, 0.82);
 		max-width: 600px;
 		margin: 0 auto;
 	}
