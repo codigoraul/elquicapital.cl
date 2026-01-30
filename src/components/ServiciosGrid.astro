@@ -16,13 +16,19 @@ const servicios = await getServicios();
         servicios.map((servicio: any, index: number) => (
           <article class="servicio-card" style={`animation-delay: ${index * 0.1}s`}>
             {servicio._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
-              <div class="card-image">
-                <img 
-                  src={servicio._embedded['wp:featuredmedia'][0].source_url} 
-                  alt={servicio.title.rendered}
-                  loading="lazy"
-                />
-              </div>
+              <a
+                class="card-image-link"
+                href={`/servicios/${servicio.slug}`}
+                aria-label={`Ver detalle de ${servicio.title?.rendered || 'servicio'}`}
+              >
+                <div class="card-image">
+                  <img 
+                    src={servicio._embedded['wp:featuredmedia'][0].source_url} 
+                    alt={servicio.title.rendered}
+                    loading="lazy"
+                  />
+                </div>
+              </a>
             )}
             <div class="card-content">
               <h3 set:html={servicio.title.rendered} />
@@ -119,6 +125,17 @@ const servicios = await getServicios();
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     border-color: var(--eq-primary);
+  }
+
+  .card-image-link {
+    display: block;
+    text-decoration: none;
+  }
+
+  .card-image-link:focus-visible {
+    outline: 3px solid rgba(var(--eq-sky-rgb), 0.6);
+    outline-offset: 2px;
+    border-radius: 12px;
   }
   
   .card-content {
