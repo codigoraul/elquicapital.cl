@@ -20,7 +20,18 @@ async function fetchAPI(endpoint) {
 }
 
 export async function getServicios() {
-  return await fetchAPI('/servicio?_embed&per_page=100') || [];
+  const ordered = await fetchAPI('/servicio?_embed&per_page=100&orderby=menu_order&order=asc');
+  if (ordered) return ordered;
+
+  const servicios = (await fetchAPI('/servicio?_embed&per_page=100')) || [];
+
+  if (!Array.isArray(servicios)) return [];
+
+  return servicios.slice().sort((a, b) => {
+    const aOrder = typeof a?.menu_order === 'number' ? a.menu_order : 0;
+    const bOrder = typeof b?.menu_order === 'number' ? b.menu_order : 0;
+    return aOrder - bOrder;
+  });
 }
 
 export async function getServicioBySlug(slug) {
