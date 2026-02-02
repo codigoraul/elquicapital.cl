@@ -20,10 +20,10 @@ async function fetchAPI(endpoint) {
   }
 }
 
-async function fetchYoastData(postId) {
-  if (!postId) return null;
+async function fetchYoastData(slug) {
+  if (!slug) return null;
   try {
-    const response = await fetch(`${YOAST_API_URL}/posts/${postId}`);
+    const response = await fetch(`${YOAST_API_URL}/get_head?url=https://elquicapital.cl/servicios/${slug}/`);
     if (!response.ok) return null;
     return await response.json();
   } catch (error) {
@@ -50,7 +50,7 @@ export async function getServicioBySlug(slug) {
   const servicios = await fetchAPI(`/servicio?slug=${slug}&_embed`);
   const servicio = servicios?.[0] || null;
   if (!servicio) return null;
-  const yoast = await fetchYoastData(servicio.id);
+  const yoast = await fetchYoastData(slug);
   return { ...servicio, yoast };
 }
 
