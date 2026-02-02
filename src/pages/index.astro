@@ -101,25 +101,27 @@ const serviciosHome = (await getServicios()).slice(0, 3);
 		</div>
 	</section>
 
-	<section class="porque-section">
+	<section class="experiencia-section">
 		<div class="container">
 			<div class="section-header">
 				<h2>Experiencia y cobertura nacional</h2>
+				<p class="section-subtitle">Amplia trayectoria y cobertura a lo largo de todo el país, brindando respaldo técnico a diversas marcas y sectores inmobiliarios.</p>
 			</div>
 
-			<div class="porque-grid">
-				<div class="porque-item">
-					<div class="porque-icon">
+			<div class="experiencia-grid">
+				<div class="experiencia-item">
+					<div class="experiencia-icon">
 						<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 							<path d="M20 10c0 7-8 13-8 13S4 17 4 10a8 8 0 0 1 16 0Z"/>
 							<circle cx="12" cy="10" r="3"/>
 						</svg>
 					</div>
 					<h3>Cobertura nacional</h3>
+					<p>Operamos en todo Chile, asegurando cumplimiento normativo a nivel local y regional.</p>
 				</div>
 
-				<div class="porque-item">
-					<div class="porque-icon">
+				<div class="experiencia-item">
+					<div class="experiencia-icon">
 						<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 							<path d="M3 7h18"/>
 							<path d="M3 12h18"/>
@@ -127,32 +129,28 @@ const serviciosHome = (await getServicios()).slice(0, 3);
 						</svg>
 					</div>
 					<h3>Marcas atendidas</h3>
+					<p>Trayectoria brindando respaldo a importantes marcas comerciales e institucionales.</p>
 				</div>
 
-				<div class="porque-item">
-					<div class="porque-icon">
+				<div class="experiencia-item">
+					<div class="experiencia-icon">
 						<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-							<path d="M20 7h-9"/>
-							<path d="M14 17H5"/>
-							<circle cx="17" cy="17" r="3"/>
+							<path d="M3 3v18h18"/>
+							<path d="M7 14l4-4 4 4 6-6"/>
 						</svg>
 					</div>
 					<h3>Continuidad operativa</h3>
-				</div>
-
-				<div class="porque-item">
-					<div class="porque-icon">
-						<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-							<path d="M12 20h9"/>
-							<path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"/>
-						</svg>
-					</div>
-					<h3>Respaldo técnico del mandante</h3>
+					<p>Años de experiencia asegurando una operación técnica ininterrumpida.</p>
 				</div>
 			</div>
 
-			<div class="casos-cta">
-				<a href="/experiencia" class="cta-button secondary">Ver experiencia</a>
+			<div class="experiencia-cta">
+				<a href="/experiencia" class="cta-button primary">
+					Ver experiencia
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+						<path d="M5 12h14M12 5l7 7-7 7"/>
+					</svg>
+				</a>
 			</div>
 		</div>
 	</section>
@@ -266,7 +264,7 @@ const serviciosHome = (await getServicios()).slice(0, 3);
 		content: '';
 		position: absolute;
 		inset: 0;
-		background: linear-gradient(135deg, rgba(0, 29, 123, 0.62) 0%, rgba(0, 29, 123, 0.45) 100%);
+		background: linear-gradient(180deg, rgba(0, 32, 80, 0.55) 0%, rgba(0, 20, 60, 0.50) 100%);
 		z-index: 0;
 	}
 
@@ -278,11 +276,7 @@ const serviciosHome = (await getServicios()).slice(0, 3);
 	}
 
 	.gradient-orb {
-		position: absolute;
-		border-radius: 50%;
-		filter: blur(100px);
-		opacity: 0.4;
-		animation: float 20s ease-in-out infinite;
+		display: none;
 	}
 
 	.orb-1 {
@@ -369,6 +363,19 @@ const serviciosHome = (await getServicios()).slice(0, 3);
 		h1 {
 			font-size: 32px;
 			line-height: 1.3;
+		}
+
+		.hero::before {
+			background-attachment: scroll;
+			filter: brightness(1.12) contrast(1.08) saturate(1.1);
+		}
+
+		.hero::after {
+			background: linear-gradient(180deg, rgba(0, 32, 80, 0.55) 0%, rgba(0, 20, 60, 0.50) 100%);
+		}
+
+		.gradient-orb {
+			display: none;
 		}
 	}
 
@@ -724,51 +731,101 @@ const serviciosHome = (await getServicios()).slice(0, 3);
 		margin-top: 3rem;
 	}
 
-	/* Sección Por qué */
-	.porque-section {
+	/* Sección Experiencia y Cobertura */
+	.experiencia-section {
 		padding: 6rem 2rem;
-		background: linear-gradient(135deg, var(--eq-surface) 0%, rgba(var(--eq-sky-rgb), 0.10) 100%);
+		background:
+			linear-gradient(180deg, rgba(0, 32, 80, 0.45) 0%, rgba(0, 20, 60, 0.50) 100%),
+			url('/images/bg-experiencia.jpg');
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		color: white;
+		position: relative;
+		overflow: hidden;
 	}
 
-	.porque-grid {
+	.experiencia-section .section-header {
+		text-align: center;
+		margin-bottom: 3rem;
+	}
+
+	.experiencia-section .section-header h2 {
+		color: #ecedee;
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin-bottom: 1rem;
+	}
+
+	.experiencia-section .section-subtitle {
+		color: rgba(255, 255, 255, 0.85);
+		font-size: 1.1rem;
+		max-width: 700px;
+		margin: 0 auto;
+		line-height: 1.7;
+	}
+
+	.experiencia-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: 2rem;
-		margin-top: 3rem;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+		margin-top: 2rem;
 	}
 
-	.porque-item {
-		background: white;
+	.experiencia-item {
+		background: rgba(216, 232, 255, 0.67);
+		backdrop-filter: blur(12px);
 		padding: 2rem;
 		border-radius: 16px;
-		border: 1px solid rgba(var(--eq-blue-rgb), 0.18);
+		border: 1px solid rgba(255, 255, 255, 0.12);
 		transition: all 0.3s ease;
 		text-align: center;
 	}
 
-	.porque-item:hover {
+
+	.experiencia-item:hover {
 		transform: translateY(-5px);
-		box-shadow: 0 10px 30px rgba(30, 58, 138, 0.15);
-		border-color: var(--eq-primary);
+		background: rgba(0, 50, 120, 0.50);
+		border-color: rgba(255, 255, 255, 0.25);
 	}
 
-	.porque-icon {
+	.experiencia-icon {
 		width: 64px;
 		height: 64px;
-		margin: 0 auto 1.5rem;
+		margin: 0 auto 1.25rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		background: var(--eq-quaternary);
-		border-radius: 12px;
+		border-radius: 50%;
 		color: white;
 	}
 
-	.porque-item h3 {
-		color: var(--eq-text);
+	.experiencia-item h3 {
+		color: rgb(47, 47, 47);
 		font-weight: 700;
-		font-size: 1.1rem;
-		line-height: 1.5;
+		font-size: 1.35rem;
+		line-height: 1.4;
+		margin-bottom: 0.75rem;
+	}
+	
+
+	.experiencia-item p {
+		color: rgba(255, 255, 255, 0.82);
+		font-size: 0.95rem;
+		line-height: 1.6;
+		margin: 0;
+	}
+
+	.experiencia-cta {
+		text-align: center;
+		margin-top: 2.5rem;
+	}
+
+	@media (max-width: 900px) {
+		.experiencia-grid {
+			grid-template-columns: 1fr;
+		}
 	}
 
 	/* Sección Consulta */
