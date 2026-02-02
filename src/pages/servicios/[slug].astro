@@ -24,15 +24,20 @@ if (!servicio) {
   return Astro.redirect('/404');
 }
 
+// Use Yoast SEO data if available, fallback to defaults
+const yoastTitle = servicio.yoast?.title || servicio.title.rendered;
+const yoastDescription = servicio.yoast?.description || '';
+const yoastCanonical = servicio.yoast?.canonical || `/servicios/${servicio.slug}`;
+
 const stripHtml = (html: string) => html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
-const rawDescription = servicio.excerpt?.rendered || servicio.content?.rendered || '';
+const rawDescription = yoastDescription || servicio.excerpt?.rendered || servicio.content?.rendered || '';
 const seoDescription = stripHtml(rawDescription).slice(0, 160);
 ---
 
 <Layout
-	title={`${servicio.title.rendered} | Elqui Capital`}
+	title={`${yoastTitle} | Elqui Capital`}
 	description={seoDescription}
-	canonicalPath={`/servicios/${servicio.slug}`}
+	canonicalPath={yoastCanonical}
 >
   <Header />
 

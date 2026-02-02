@@ -1,4 +1,5 @@
 const WORDPRESS_API_URL = (import.meta.env.WORDPRESS_API_URL || 'https://elquicapital.cl/admin/wp-json/wp/v2').replace(/\/+$/, '');
+const YOAST_API_URL = 'https://elquicapital.cl/admin/wp-json/yoast/v1';
 
 async function fetchAPI(endpoint) {
   const normalizedEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
@@ -15,6 +16,17 @@ async function fetchAPI(endpoint) {
     return await response.json();
   } catch (error) {
     console.error(`Error connecting to WordPress API: ${error.message}`);
+    return null;
+  }
+}
+
+async function fetchYoastData(postId) {
+  if (!postId) return null;
+  try {
+    const response = await fetch(`${YOAST_API_URL}/posts/${postId}`);
+    if (!response.ok) return null;
+    return await response.json();
+  } catch (error) {
     return null;
   }
 }
@@ -36,7 +48,10 @@ export async function getServicios() {
 
 export async function getServicioBySlug(slug) {
   const servicios = await fetchAPI(`/servicio?slug=${slug}&_embed`);
-  return servicios?.[0] || null;
+  const servicio = servicios?.[0] || null;
+  if (!servicio) return null;
+  const yoast = await fetchYoastData(servicio.id);
+  return { ...servicio, yoast };
 }
 
 export async function getTestimonios() {
