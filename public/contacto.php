@@ -7,7 +7,7 @@ $SITE_URL = (isset($_SERVER['HTTP_HOST']) && is_string($_SERVER['HTTP_HOST']) &&
   ? ('https://' . $_SERVER['HTTP_HOST'])
   : 'https://elquicapital.cl';
 
-$TO_EMAILS_BASE = 'codigoraul@gmail.com, contacto@elquicapital.cl';
+$TO_EMAILS_BASE = 'codigorau3l@gmail.com';
 $TO_EMAIL = $TO_EMAILS_BASE;
 $FROM_EMAIL = 'contacto@elquicapital.cl';
 $FROM_NAME = 'Elqui Capital';
@@ -78,13 +78,13 @@ function base_url(string $siteUrl, string $basePath, string $path): string {
 }
 
 function contacto_url(string $siteUrl, string $basePath, string $status): string {
-  $base = base_url($siteUrl, $basePath, '/contacto');
+  $base = base_url($siteUrl, $basePath, '/contacto.php');
   $qs = http_build_query(['status' => $status]);
   return $base . '?' . $qs . '#contacto';
 }
 
 function contacto_url_with_error(string $siteUrl, string $basePath, string $status, string $error): string {
-  $base = base_url($siteUrl, $basePath, '/contacto');
+  $base = base_url($siteUrl, $basePath, '/contacto.php');
   $qs = http_build_query(['status' => $status, 'error' => $error]);
   return $base . '?' . $qs . '#contacto';
 }
