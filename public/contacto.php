@@ -228,7 +228,7 @@ if (!$ok) {
 }
 
 if ($ok) {
-  redirect_to(contacto_url($SITE_URL, $BASE_PATH, 'success'));
+  redirect_to(base_url($SITE_URL, $BASE_PATH, '/?form=success#contacto'));
 }
 
 redirect_to(contacto_url($SITE_URL, $BASE_PATH, 'mail_failed'));
