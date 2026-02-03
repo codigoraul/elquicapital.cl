@@ -1,6 +1,8 @@
 ---
 import { getContactInfo } from '../lib/wordpress.js';
 
+const { status = null } = Astro.props;
+
 const contactInfo = await getContactInfo();
 
 const email = contactInfo?.acf?.email || 'contacto@elquicapital.cl';
@@ -127,7 +129,7 @@ const actionUrl = `${basePath}/contacto.php`;
   </div>
 </section>
 
-<script>
+<script define:vars={{ status }}>
   const statusMessages = {
     success: { type: 'success', text: '¡Mensaje enviado exitosamente! Nos pondremos en contacto contigo pronto.' },
     missing_fields: { type: 'error', text: 'Por favor completa todos los campos obligatorios.' },
@@ -135,15 +137,16 @@ const actionUrl = `${basePath}/contacto.php`;
     mail_failed: { type: 'error', text: 'No se pudo enviar el mensaje. Por favor intenta nuevamente o contáctanos por teléfono.' },
   };
 
-  const params = new URLSearchParams(window.location.search);
-  const status = params.get('status');
-  const data = status && status in statusMessages ? statusMessages[status as keyof typeof statusMessages] : null;
+  const data = status && status in statusMessages ? statusMessages[status] : null;
   const el = document.getElementById('contact-status');
 
   if (el && data) {
     el.textContent = data.text;
     el.classList.add(data.type === 'success' ? 'status-success' : 'status-error');
     el.style.display = '';
+    
+    // Scroll al mensaje de estado
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 </script>
 
