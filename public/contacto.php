@@ -78,13 +78,13 @@ function base_url(string $siteUrl, string $basePath, string $path): string {
 }
 
 function contacto_url(string $siteUrl, string $basePath, string $status): string {
-  $base = base_url($siteUrl, $basePath, '/contacto.php');
+  $base = base_url($siteUrl, $basePath, '/contacto');
   $qs = http_build_query(['status' => $status]);
   return $base . '?' . $qs . '#contacto';
 }
 
 function contacto_url_with_error(string $siteUrl, string $basePath, string $status, string $error): string {
-  $base = base_url($siteUrl, $basePath, '/contacto.php');
+  $base = base_url($siteUrl, $basePath, '/contacto');
   $qs = http_build_query(['status' => $status, 'error' => $error]);
   return $base . '?' . $qs . '#contacto';
 }
