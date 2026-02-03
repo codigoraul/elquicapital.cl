@@ -5,7 +5,7 @@ declare(strict_types=1);
 return [
   'BASE_PATH' => '',
   'SITE_URL' => 'https://elquicapital.cl',
-  'TO_EMAIL' => 'contacto@elquicapital.cl, codigoraul@gmail.com',
+  'TO_EMAIL' => ' codigoraul@gmail.com',
   'FROM_EMAIL' => 'contacto@elquicapital.cl',
   'FROM_NAME' => 'Elqui Capital',
   'BCC_EMAILS' => '',
