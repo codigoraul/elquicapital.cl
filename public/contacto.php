@@ -120,11 +120,15 @@ $asunto = trim((string)($_POST['asunto'] ?? ''));
 $mensaje = trim((string)($_POST['mensaje'] ?? ''));
 
 if ($nombre === '' || $email === '' || $mensaje === '') {
-  redirect_to(contacto_url($SITE_URL, $BASE_PATH, 'missing_fields'));
+  header('Content-Type: application/json');
+  echo json_encode(['success' => false, 'message' => 'Por favor completa todos los campos obligatorios.']);
+  exit;
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  redirect_to(contacto_url($SITE_URL, $BASE_PATH, 'invalid_email'));
+  header('Content-Type: application/json');
+  echo json_encode(['success' => false, 'message' => 'El correo electrónico ingresado no es válido.']);
+  exit;
 }
 
 $subject = 'Nueva consulta desde elquicapital.cl';
@@ -228,7 +232,13 @@ if (!$ok) {
 }
 
 if ($ok) {
-  redirect_to(base_url($SITE_URL, $BASE_PATH, '/?form=success#contacto'));
+  header('Content-Type: application/json');
+  echo json_encode(['success' => true, 'message' => '¡Mensaje enviado exitosamente! Nos pondremos en contacto contigo pronto.']);
+  exit;
 }
 
 redirect_to(contacto_url($SITE_URL, $BASE_PATH, 'mail_failed'));
+
+// Si llegamos aquí, hubo un error al enviar
+header('Content-Type: application/json');
+echo json_encode(['success' => false, 'message' => 'No se pudo enviar el mensaje. Por favor intenta nuevamente o contáctanos por teléfono.']);
