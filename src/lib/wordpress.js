@@ -50,7 +50,10 @@ export async function getServicioBySlug(slug) {
   const servicios = await fetchAPI(`/servicio?slug=${slug}&_embed`);
   const servicio = servicios?.[0] || null;
   if (!servicio) return null;
-  const yoast = await fetchYoastData(slug);
+  
+  // Los datos de Yoast vienen en el embed, no necesita llamada separada
+  const yoast = servicio.yoast_head_json || null;
+  
   return { ...servicio, yoast };
 }
 
