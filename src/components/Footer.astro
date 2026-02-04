@@ -1,10 +1,12 @@
 ---
-import { getContactInfo } from '../lib/wordpress.js';
+import { getContactInfo, getServicios } from '../lib/wordpress.js';
 
 const contactInfo = await getContactInfo();
 const email = contactInfo?.acf?.email || 'contacto@protrabajo.cl';
 const telefono = contactInfo?.acf?.telefono || '+569 33770553';
 const direccion = contactInfo?.acf?.direccion || 'Santa Magdalena N° 75, Providencia.';
+
+const servicios = await getServicios();
 ---
 
 <footer class="footer">
@@ -15,7 +17,8 @@ const direccion = contactInfo?.acf?.direccion || 'Santa Magdalena N° 75, Provid
           <source srcset="/logo-elquicapital.svg" type="image/svg+xml" />
           <img src="/logo-elquicapital.png" alt="ElQuiCapital" style="height: 72px;" />
         </picture>
-        <p class="footer-desc">Asesoría legal especializada en derecho laboral con más de 10 años de experiencia defendiendo tus derechos.</p>
+        <p class="footer-desc">Nuestro foco es gestionar técnicamente proyectos para que operen sin contingencias municipales, sanitarias o técnicas.</p>
+        <p class="footer-desc">Actuamos como respaldo técnico del mandante frente a municipios, servicios sanitarios y procesos de inspección.</p>
         <div class="social-links">
           <a href="#" aria-label="LinkedIn" class="social-link">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -38,10 +41,9 @@ const direccion = contactInfo?.acf?.direccion || 'Santa Magdalena N° 75, Provid
       <div class="footer-col">
         <h4>Servicios</h4>
         <ul class="footer-links">
-          <li><a href="servicios">Gestión Técnica Inmobiliaria</a></li>
-          <li><a href="servicios">Permisología</a></li>
-          <li><a href="servicios">Inspección Técnica de Obras</a></li>
-          <li><a href="servicios">Mantención Eléctrica Especializada</a></li>
+          {servicios && servicios.map((servicio: any) => (
+            <li><a href={`/servicios/${servicio.slug}`}>{servicio.title.rendered}</a></li>
+          ))}
         </ul>
       </div>
 

@@ -32,9 +32,6 @@ async function fetchYoastData(slug) {
 }
 
 export async function getServicios() {
-  const ordered = await fetchAPI('/servicio?_embed&per_page=100&orderby=menu_order&order=asc');
-  if (ordered) return ordered;
-
   const servicios = (await fetchAPI('/servicio?_embed&per_page=100')) || [];
 
   if (!Array.isArray(servicios)) return [];
